@@ -5,16 +5,16 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname='libgmp.so.10'
+dlname='libgmp.10.dylib'
 
 # Names of this library.
-library_names='libgmp.so.10.3.2 libgmp.so.10 libgmp.so'
+library_names='libgmp.10.dylib libgmp.dylib'
 
 # The name of the static archive.
 old_library=''
 
 # Linker flags that cannot go in dependency_libs.
-inherited_linker_flags=''
+inherited_linker_flags=' '
 
 # Libraries that this one depends upon.
 dependency_libs=''
@@ -23,9 +23,9 @@ dependency_libs=''
 weak_library_names=''
 
 # Version information for libgmp.
-current=13
-age=3
-revision=2
+current=14
+age=4
+revision=1
 
 # Is this an already installed library?
 installed=yes
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/hsgo/HElib/build/helib_pack/lib'
+libdir='/Users/myu/Documents/GitHub/Lobster/homomorphic_evaluation/lib/HElib/build/helib_pack/lib'

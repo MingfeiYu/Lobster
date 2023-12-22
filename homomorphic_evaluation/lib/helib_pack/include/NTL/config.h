@@ -68,7 +68,7 @@ to be defined.  Of course,  to unset a flag, just replace the
 
 #endif
 
-#if 0
+#if 1
 #define NTL_THREADS
 
 /* Set if you want to compile NTL as a thread-safe library.
@@ -87,7 +87,7 @@ to be defined.  Of course,  to unset a flag, just replace the
 
 #endif
 
-#if 0
+#if 1
 #define NTL_THREAD_BOOST
 
 /* Set if you want to compile NTL to exploit threads internally.
@@ -420,7 +420,7 @@ to be defined.  Of course,  to unset a flag, just replace the
 
 
 
-#if 0
+#if 1
 #define NTL_AVOID_BRANCHING
 
 /*
@@ -513,6 +513,19 @@ to be defined.  Of course,  to unset a flag, just replace the
 
 #endif
 
+#if 0
+#define NTL_RANDOM_AES256CTR
+
+/*
+ * By default, the random-number generator is based on ChaCha20.
+ * From a performance perspective, this choice may not be optimal
+ * for platforms featuring AES hardware support.
+ * By setting this flag you can override the default and use an
+ * AES-256-CTR based random-number generator.
+ *
+ */
+
+#endif
 
 
 /* sanity checks */
