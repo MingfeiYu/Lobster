@@ -5,7 +5,8 @@ project(simple_wc_example CXX)
 cmake_minimum_required(VERSION 3.1)
 
 set(helib_DIR "../lib/helib_pack/share/cmake/helib")
-find_package(helib 1.0.0 EXACT REQUIRED)
+# find_package(helib 1.0.0 EXACT REQUIRED)
+find_package(helib REQUIRED)
 find_package(BISON REQUIRED)
 find_package(FLEX REQUIRED)
 
@@ -30,7 +31,7 @@ target_include_directories(he_base
         .
         ${CMAKE_CURRENT_BINARY_DIR})
 set_property(TARGET he_base
-             PROPERTY CXX_STANDARD 14)
+             PROPERTY CXX_STANDARD 17)
 
 enable_testing()
 add_test(NAME basic

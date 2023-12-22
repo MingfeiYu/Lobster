@@ -4,7 +4,7 @@ module Node = struct
    type nodeVal = AND | OR | NOT | XOR | VAR of string | CONST of bool
    type label = int (* gate index(only to construct) *)
    type t = nodeVal * label
-   let compare = Pervasives.compare
+   let compare = Stdlib.compare
    let hash = Hashtbl.hash
    let equal = (=)
    (*let to_string node = 
