@@ -147,7 +147,73 @@ bexp
 		b->right = r;
 		
 		$$ = b;
-		}	
+		}
+	| TK_NOT TK_VAR TK_AND TK_VAR
+		{
+		Bexp *b = new Bexp();
+		b->head = Bexp::Head::AND;
+
+		Bexp *l = new Bexp();
+		l->head = Bexp::Head::VAR;
+		l->var = $2;
+		Bexp *l_inv = new Bexp();
+		l_inv->head = Bexp::Head::NOT;
+		l_inv->right = l;
+
+		Bexp *r = new Bexp();
+		r->head = Bexp::Head::VAR;
+		r->var = $4;
+
+		b->left = l_inv;
+		b->right = r;
+
+		$$ = b;
+		}
+	| TK_VAR TK_AND TK_NOT TK_VAR
+		{
+		Bexp *b = new Bexp();
+		b->head = Bexp::Head::AND;
+
+		Bexp *l = new Bexp();
+		l->head = Bexp::Head::VAR;
+		l->var = $1;
+
+		Bexp *r = new Bexp();
+		r->head = Bexp::Head::VAR;
+		r->var = $4;
+		Bexp *r_inv = new Bexp();
+		r_inv->head = Bexp::Head::NOT;
+		r_inv->right = r;
+
+		b->left = l;
+		b->right = r_inv;
+
+		$$ = b;
+		}
+	| TK_NOT TK_VAR TK_AND TK_NOT TK_VAR
+		{
+		Bexp *b = new Bexp();
+		b->head = Bexp::Head::AND;
+
+		Bexp *l = new Bexp();
+		l->head = Bexp::Head::VAR;
+		l->var = $2;
+		Bexp *l_inv = new Bexp();
+		l_inv->head = Bexp::Head::NOT;
+		l_inv->right = l;
+
+		Bexp *r = new Bexp();
+		r->head = Bexp::Head::VAR;
+		r->var = $5;
+		Bexp *r_inv = new Bexp();
+		r_inv->head = Bexp::Head::NOT;
+		r_inv->right = r;
+
+		b->left = l_inv;
+		b->right = r_inv;
+
+		$$ = b;
+		}
 	| TK_VAR TK_OR TK_VAR 
 		{
 		Bexp *b = new Bexp();

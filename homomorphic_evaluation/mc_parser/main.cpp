@@ -155,6 +155,13 @@ int main( int argc, char **argv )
                     }
                 }
 
+                else if ( lchild_op == MC::Bexp::Head::NOT )
+                {
+                    lchild_var = l_child->right->var;
+                    lchild_ctxt = memory.find( lchild_var )->second;
+                    lchild_ctxt += true_ctxt;
+                }
+
                 else if ( lchild_op == MC::Bexp::Head::VAR )
                 {
                     lchild_ctxt = memory.find( lchild_var )->second;
@@ -165,7 +172,7 @@ int main( int argc, char **argv )
                 int rchild_const = r_child->constant;
                 helib::Ctxt rchild_ctxt( pk );
 
-                if( rchild_op == MC::Bexp::Head::CONST )
+                if ( rchild_op == MC::Bexp::Head::CONST )
                 {
                     if ( rchild_const == 1 )
                     {
@@ -175,6 +182,13 @@ int main( int argc, char **argv )
                     {
                         rchild_ctxt = false_ctxt;
                     }
+                }
+
+                else if ( rchild_op == MC::Bexp::Head::NOT )
+                {
+                    rchild_var = r_child->right->var;
+                    rchild_ctxt = memory.find( rchild_var )->second;
+                    rchild_ctxt += true_ctxt;
                 }
 
                 else if ( rchild_op == MC::Bexp::Head::VAR )
